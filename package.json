@@ -37,6 +37,7 @@
     "@fastify/mongodb": "^9.0.1",
     "@types/node": "^22.8.6",
     "close-with-grace": "^2.1.0",
+    "dotenv": "^16.4.5",
     "fastify-plugin": "^5.0.1",
     "pino-pretty": "^11.3.0"
   }

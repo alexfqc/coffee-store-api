@@ -11,16 +11,9 @@ async function routes(fastify): Promise<void> {
 
   fastify.addSchema(productsSchema);
 
-  fastify.get("/", async () => {
-    return { hello: "world" };
-  });
-
   fastify.get("/products", async () => {
     try {
       const result = await collection.find().toArray();
-      if (result.length === 0) {
-        throw new Error("No documents found");
-      }
       return result;
     } catch (e) {
       return e.message;
@@ -36,11 +29,9 @@ async function routes(fastify): Promise<void> {
     },
     async (request) => {
       const result = await collection.insertOne(request.body);
-      console.log(result);
       return result.insertedId;
     }
   );
 }
 
-//ESM
 export default fastifyPlugin(routes);
