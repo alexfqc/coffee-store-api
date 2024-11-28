@@ -1,6 +1,6 @@
 // @ts-check
-import fastify from "fastify";
 import * as Interfaces from "./src/interfaces/app.ts";
+import { build } from "./app.ts";
 
 const getOpts = (): Interfaces.Opts => {
   if (process.stdout.isTTY) {
@@ -11,10 +11,6 @@ const getOpts = (): Interfaces.Opts => {
 
 const opts = getOpts();
 
-const app = fastify(opts);
+const app = await build(opts);
 
-app.get("/", (): string => {
-  return "world";
-});
-
-app.listen({ port: 3000 });
+await await app.listen({ port: 3000 });

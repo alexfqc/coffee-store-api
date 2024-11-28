@@ -6,8 +6,6 @@ interface Transport {
   transport: Target;
 }
 
-interface Opts {
+export interface Opts {
   logger: Transport | boolean;
 }
-
-export type { Opts };
