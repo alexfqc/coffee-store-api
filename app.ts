@@ -6,14 +6,16 @@ import * as Interfaces from "./src/interfaces/app.ts";
 import "dotenv/config";
 
 export const build = async (
-  opts: Interfaces.Opts,
-  isTest = false
+  opts: Interfaces.Opts
 ): Promise<FastifyInstance> => {
   const app = fastify(opts);
 
   app.register(fastifyMongo, {
     forceClose: true,
-    url: !isTest ? process.env.MONGODB_URL : process.env.MONGODB_URL_TEST
+    url:
+      process.env.NODE_ENV !== "test"
+        ? process.env.MONGODB_URL
+        : process.env.MONGODB_URL_TEST
   });
 
   app.setNotFoundHandler(async (_, reply) => {

@@ -5,7 +5,7 @@ import * as Interfaces from "../../src/interfaces/app.ts";
 
 test("products", async (t) => {
   const optsTest: Interfaces.Opts = { logger: false };
-  const app = await build(optsTest, true);
+  const app = await build(optsTest);
 
   t.before(async () => {
     await app.mongo.db?.collection("products").drop();
