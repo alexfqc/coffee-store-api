@@ -1,5 +1,5 @@
 import fastifyPlugin from "fastify-plugin";
-import { productsSchema } from "../schemas/products";
+import { productsSchema } from "../schemas/products.ts";
 
 /**
  * Encapsulates the routes
